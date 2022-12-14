@@ -1,4 +1,4 @@
-const Header = () => {
+const OurCustomHeader = () => {
   return (
     <div>
       <h1>ZDFRONpol18 Clicker</h1>
@@ -8,4 +8,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default OurCustomHeader;
