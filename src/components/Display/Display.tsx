@@ -10,6 +10,7 @@ const Display = (props: DisplayProps) => {
     <>
       <span>0</span>
       <p>{props.random}</p>
+      <p>{props.responseValue}</p>
     </>
   );
 };
