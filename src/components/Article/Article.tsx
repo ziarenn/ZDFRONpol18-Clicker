@@ -5,6 +5,8 @@ interface ArticleProps {
 }
 
 const Article = (props: ArticleProps) => {
+
+    
   return (
     <article>
       <h3>To jest komponent Article</h3>
