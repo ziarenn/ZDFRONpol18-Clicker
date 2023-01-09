@@ -5,35 +5,38 @@ import Article from "./components/Article/Article";
 import Display from "./components/Display/Display";
 import Manipulator from "./components/Manipulator/Manipulator";
 
-export type count = string | number | boolean;
+// export type count = string | number | boolean;
 
 function App() {
-  const list = [1, 2, 3, 4, 5, 6];
-  // const firstListElement = list[0]; // 1
-  // const secondListElement = list[1]; // 2
-  // const thirdListElement = list[2]; // 3
-  const [firstListElement, secondListElement, thirdListElement, ...rest] = list;
-  console.log(firstListElement);
-  console.log(secondListElement);
-  console.log(thirdListElement);
-  console.log(rest);
-  // 1wszy element useState: zmienna stanowa, pojemnik na dane, zmiana jej wartości powoduje przeładowanie się komponentu w którym została zainicjalizowana
-  // 2gi element useState: funkcja aktualizująca zmienną stanową, zmienna stanowa i jej funkcja są nierozłączne
-
-  const [count, setCount] = useState<count>(0);
+  // Hook useState służy do definiowania zmiennych których zmiana wartości ma spwodować przeładowanie (refresh) komponentu w którym sam stan został zdefiniowany (ma się przeładować komponent w którym został wywołany useState)
+  const [count, setCount] = useState<number>(0);
+  let countAleNieStan = 0;
   //count = 5 ŹLE
   // setCount(5)// DOBRZE
   //symulacja strzału do API
-  const response = 15;
-  const randomNumber = Math.random();
-  const stringWithRandomNumberInIt = `lalalalala ${randomNumber} lalalalala ${response} lalalalala`;
+  // const response = 15;
+  // nie uzywamy math random na top scopie
+  // const randomNumber = Math.random();
+  // const stringWithRandomNumberInIt = `lalalalala ${randomNumber} lalalalala ${response} lalalalala`;
+
+  // Handlery = atrybuty elementów JSX, możemy do tych atrybutów podawać funkcje które mają się wykonywać przy wywołaniu eventu zdefiniowanego w nazwie handlera, wszystkie zaczynają się na *on*, np. onClick, onSubmit, onHover itd...
+  // onClick={fn}, funkcja fn wykona się w momencie kliknięcia na element na który został przypięty onClick
+  // onSubmit={fn}, funckja fn wykona się w momencie kiedy formularz na który został przypiety onSubmit, zostanie zsubmitowany
+
+  const handleButtonClick = () => {
+    setCount(count + 1);
+  };
+
   return (
     <div className="App">
       <OurCustomHeader />
-      <Article text={stringWithRandomNumberInIt} />
-      <Display responseValue={response} random={randomNumber} />
+      {/* <Article text={stringWithRandomNumberInIt} />
+      <Display responseValue={response} random={randomNumber} /> */}
       <Manipulator />
-      <input />
+      <button onClick={handleButtonClick}>Dodaj 1 do zmiennej stanowej</button>
+      <button>Dodaj 1 do zwykłego leta</button>
+      <p>To jest zmienna stanowa: {count}</p>
+      <p>To jest zwykły let: {countAleNieStan}</p>
     </div>
   );
 }
@@ -76,3 +79,15 @@ export default App;
 // } else {
 //   console.log("Pobieranie trwa");
 // }
+
+// const list = [1, 2, 3, 4, 5, 6];
+// // const firstListElement = list[0]; // 1
+// // const secondListElement = list[1]; // 2
+// // const thirdListElement = list[2]; // 3
+// const [firstListElement, secondListElement, thirdListElement, ...rest] = list;
+// console.log(firstListElement);
+// console.log(secondListElement);
+// console.log(thirdListElement);
+// console.log(rest);
+// 1wszy element useState: zmienna stanowa, pojemnik na dane, zmiana jej wartości powoduje przeładowanie się komponentu w którym została zainicjalizowana
+// 2gi element useState: funkcja aktualizująca zmienną stanową, zmienna stanowa i jej funkcja są nierozłączne

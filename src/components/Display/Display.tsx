@@ -23,3 +23,5 @@ export default Display;
           ? "Liczba większa od 0.5"
           : "Liczba mniejsza od 0.5"}
       </span> */
+
+
