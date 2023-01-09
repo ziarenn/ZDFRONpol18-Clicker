@@ -4,7 +4,7 @@ import Article from "./components/Article/Article";
 
 import Display from "./components/Display/Display";
 import Manipulator from "./components/Manipulator/Manipulator";
-
+import CountDisplay from "./components/CountDisplay/CountDisplay";
 // export type count = string | number | boolean;
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
     <div className="App">
       <OurCustomHeader />
       <Manipulator setCount={setCount} count={count} />
+      <CountDisplay count={count} />
     </div>
   );
 }

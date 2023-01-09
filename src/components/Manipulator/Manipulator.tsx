@@ -5,13 +5,20 @@ interface ManipulatorProps {
   count: number;
 }
 
-const Manipulator = ({ count, setCount }: ManipulatorProps) => {
-  // count
-  // setCount()
+const Manipulator = ({ setCount, count }: ManipulatorProps) => {
+  
+  const incrementCount = () => {
+    setCount(count + 1);
+  };
+
+  const decrementCount = () => {
+    setCount(count - 1);
+  };
+
   return (
     <div>
-      <button>+</button>
-      <button>-</button>
+      <button onClick={incrementCount}>+</button>
+      <button onClick={decrementCount}>-</button>
     </div>
   );
 };
