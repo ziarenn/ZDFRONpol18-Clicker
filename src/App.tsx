@@ -10,38 +10,20 @@ import Manipulator from "./components/Manipulator/Manipulator";
 function App() {
   // Hook useState służy do definiowania zmiennych których zmiana wartości ma spwodować przeładowanie (refresh) komponentu w którym sam stan został zdefiniowany (ma się przeładować komponent w którym został wywołany useState)
   const [count, setCount] = useState<number>(0);
-  let countAleNieStan = 0;
-  //count = 5 ŹLE
-  // setCount(5)// DOBRZE
-  //symulacja strzału do API
-  // const response = 15;
-  // nie uzywamy math random na top scopie
-  // const randomNumber = Math.random();
-  // const stringWithRandomNumberInIt = `lalalalala ${randomNumber} lalalalala ${response} lalalalala`;
-
-  // Handlery = atrybuty elementów JSX, możemy do tych atrybutów podawać funkcje które mają się wykonywać przy wywołaniu eventu zdefiniowanego w nazwie handlera, wszystkie zaczynają się na *on*, np. onClick, onSubmit, onHover itd...
-  // onClick={fn}, funkcja fn wykona się w momencie kliknięcia na element na który został przypięty onClick
-  // onSubmit={fn}, funckja fn wykona się w momencie kiedy formularz na który został przypiety onSubmit, zostanie zsubmitowany
-
-  const handleButtonClick = () => {
-    setCount(count + 1);
-  };
 
   return (
     <div className="App">
       <OurCustomHeader />
-      {/* <Article text={stringWithRandomNumberInIt} />
-      <Display responseValue={response} random={randomNumber} /> */}
-      <Manipulator />
-      <button onClick={handleButtonClick}>Dodaj 1 do zmiennej stanowej</button>
-      <button>Dodaj 1 do zwykłego leta</button>
-      <p>To jest zmienna stanowa: {count}</p>
-      <p>To jest zwykły let: {countAleNieStan}</p>
+      <Manipulator setCount={setCount} count={count} />
     </div>
   );
 }
 
 export default App;
+
+// 1. Przekazanie funkcji setCount do komponentu manipulator przy pomocy propsów.
+// 2. W komponencie manipulator dodaj click handlery na oba przyciski, po kliknięciu na przycisk "-" zmniejszaj stan count o 1 (czyli wywołaj funkcję setCount i zmniejszaj count o 1), analogicznie dla przycisku + zwiększaj count o 1.
+// 3. Stwórz komponent CountDisplay. Wyświetlaj w nim paragraf ze stanem count. Sam stan count przekaż propsem. Komponent CountDisplay wyświetlaj w komponencie App.
 
 // 2. Przekaż tego stringa za pomocą propsów do Article.tsx i wyświetl go tam w nowym paragrafie.
 // ReactDom.render(
@@ -91,3 +73,30 @@ export default App;
 // console.log(rest);
 // 1wszy element useState: zmienna stanowa, pojemnik na dane, zmiana jej wartości powoduje przeładowanie się komponentu w którym została zainicjalizowana
 // 2gi element useState: funkcja aktualizująca zmienną stanową, zmienna stanowa i jej funkcja są nierozłączne
+
+//let countAleNieStan = 0;
+//count = 5 ŹLE
+// setCount(5)// DOBRZE
+//symulacja strzału do API
+// const response = 15;
+// nie uzywamy math random na top scopie
+// const randomNumber = Math.random();
+// const stringWithRandomNumberInIt = `lalalalala ${randomNumber} lalalalala ${response} lalalalala`;
+
+// Handlery = atrybuty elementów JSX, możemy do tych atrybutów podawać funkcje które mają się wykonywać przy wywołaniu eventu zdefiniowanego w nazwie handlera, wszystkie zaczynają się na *on*, np. onClick, onSubmit, onHover itd...
+// onClick={fn}, funkcja fn wykona się w momencie kliknięcia na element na który został przypięty onClick
+// onSubmit={fn}, funckja fn wykona się w momencie kiedy formularz na który został przypiety onSubmit, zostanie zsubmitowany
+
+// const handleButtonClick = () => {
+//   setCount(count + 1);
+// };
+
+// const handleWrongButtonClick = () => {
+//   countAleNieStan++;
+//   console.log(countAleNieStan);
+// };
+
+/* <button onClick={handleButtonClick}>Dodaj 1 do zmiennej stanowej</button>
+      <button onClick={handleWrongButtonClick}>Dodaj 1 do zwykłego leta</button>
+      <p>To jest zmienna stanowa: {count}</p>
+      <p>To jest zwykły let: {countAleNieStan}</p> */

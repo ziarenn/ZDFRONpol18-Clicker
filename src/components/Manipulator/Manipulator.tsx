@@ -1,6 +1,13 @@
 import React from "react";
 
-const Manipulator = () => {
+interface ManipulatorProps {
+  setCount: (value: number) => void;
+  count: number;
+}
+
+const Manipulator = ({ count, setCount }: ManipulatorProps) => {
+  // count
+  // setCount()
   return (
     <div>
       <button>+</button>
