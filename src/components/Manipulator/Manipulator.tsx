@@ -6,7 +6,7 @@ interface ManipulatorProps {
 }
 
 const Manipulator = ({ setCount, count }: ManipulatorProps) => {
-  
+
   const incrementCount = () => {
     setCount(count + 1);
   };
@@ -24,3 +24,6 @@ const Manipulator = ({ setCount, count }: ManipulatorProps) => {
 };
 
 export default Manipulator;
+
+
+// const Manipulator: React.FC<ManipulatorProps> = ({ setCount, count }) =>
