@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import OurCustomHeader from "./components/Header/Header";
-import Manipulator from "./components/Manipulator/Manipulator";
-import CountDisplay from "./components/CountDisplay/CountDisplay";
-import GreetAndGenerate from "./components/GreetAndGenerate/GreetAndGenerate";
+// import Manipulator from "./components/Manipulator/Manipulator";
+// import CountDisplay from "./components/CountDisplay/CountDisplay";
+// import GreetAndGenerate from "./components/GreetAndGenerate/GreetAndGenerate";
 import DownloadButton from "./components/DownloadButton/DownloadButton";
+import TodoDisplay from "./components/TodoDisplay/TodoDisplay";
 // export type count = string | number | boolean;
 
 function App() {
   // Hook useState służy do definiowania zmiennych których zmiana wartości ma spwodować przeładowanie (refresh) komponentu w którym sam stan został zdefiniowany (ma się przeładować komponent w którym został wywołany useState)
-  const [count, setCount] = useState<number>(0);
-
+  //const [count, setCount] = useState<number>(0);
+  const [todo, setTodo] = useState<string>("");
   return (
     <div className="App">
       <OurCustomHeader />
       {/* <Manipulator setCount={setCount} count={count} />
       <CountDisplay count={count} />
       <GreetAndGenerate /> */}
-      <DownloadButton />
+      <DownloadButton setTodo={setTodo} />
+      <TodoDisplay todo={todo} />
     </div>
   );
 }
@@ -102,4 +104,3 @@ export default App;
       <button onClick={handleWrongButtonClick}>Dodaj 1 do zwykłego leta</button>
       <p>To jest zmienna stanowa: {count}</p>
       <p>To jest zwykły let: {countAleNieStan}</p> */
-

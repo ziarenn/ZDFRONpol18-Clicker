@@ -1,8 +1,10 @@
 import { useState } from "react";
 
-const DownloadButton = () => {
-  const [todo, setTodo] = useState<string>("");
+interface DownloadButtonProps {
+  setTodo: (title: string) => void;
+}
 
+const DownloadButton = ({ setTodo }: DownloadButtonProps) => {
   const fetchTodos = () => {
     fetch(
       `https://jsonplaceholder.typicode.com/todos/${Math.floor(
@@ -21,9 +23,12 @@ const DownloadButton = () => {
   return (
     <div>
       <button onClick={fetchTodos}>Download todo</button>
-      <span>{todo}</span>
     </div>
   );
 };
 
 export default DownloadButton;
+
+// 3. Spana wyświetlającego stan todo przenieś do nowego komponentu który ma się nazywać TodoDisplay.
+// 4. Wyświetl komponent TodoDisplay w App.tsx. Tam też przekazuj stan todo z App.tsx do TodoDisplay.
+// NIE PRZENOŚ FETCHA!!!
